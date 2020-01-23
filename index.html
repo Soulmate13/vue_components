@@ -20,7 +20,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         // Создайте компонент, который будет выполнять следующее поведение: в шаблоне – должны быть две кнопки с функциями инкремента и декремента, параграф и поле ввода. Пользователь в текстовое поле вводит число, после потери фокуса данного поля это число моментально появляется ниже в значении параграфа. Значение поля очищается. При нажатии на данные кнопки число, находящееся в параграфе, должно добавлять единицу или вычитать. 
-        Vue.component('counter', {
+        let component = {
             data: function () {
                 return {
                     count: 0,
@@ -34,10 +34,13 @@
                 }
             },
             template: '<div> <input type="text" v-model.lazy.number="count" @blur ="submit"><div class="button_panel"><button v-on:click="submitted.count--">Subtract 1</button><p> {{ submitted.count }}</p><button v-on:click="submitted.count++">Add 1</button></div></div>'
-        })
+        }
         var app = new Vue({
             el: '#app',
             data: {
+            },
+            components: {
+                'counter': component
             }
         })
 
